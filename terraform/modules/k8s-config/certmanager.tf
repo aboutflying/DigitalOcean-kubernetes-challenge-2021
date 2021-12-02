@@ -6,6 +6,7 @@ resource "helm_release" "cert_manager" {
 
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"
+  version    = var.certmanager_version
 
   set {
     name  = "installCRDs"
@@ -22,8 +23,6 @@ resource "helm_release" "cert_manager" {
   create_namespace = true
   atomic           = true
 }
-
-# needs ClusterIssuers & Certificates (make sure they go in istio-ingress ns)
 
 resource "kubernetes_secret_v1" "example" {
   metadata {

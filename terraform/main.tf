@@ -1,5 +1,5 @@
 module "do" {
-  source = "./modules/do"
+  source = "./modules/do-config"
 
   project_name        = var.project_name
   project_description = var.project_description
@@ -19,14 +19,19 @@ module "k8s-config" {
   cluster_token          = module.do.cluster_token
   cluster_ca_certificate = module.do.cluster_ca_certificate
 
+  istio_version = var.istio_version
+
+  argo_version                                = var.argo_version
   argo_url                                    = var.argo_url
   argo_applicationset_controller_manifest_url = var.argo_applicationset_controller_manifest_url
+
+  certmanager_version = var.certmanager_version
 
   route53_credentials_secret_access_key = var.route53_credentials_secret_access_key
   route53_credentials_access_key_id     = var.route53_credentials_access_key_id
   route53_hosted_zone_id                = var.route53_hosted_zone_id
   route53_dns_zone                      = var.route53_dns_zone
+  route53_region                        = var.route53_region
 
-  letsencrypt_email  = var.letsencrypt_email
-  letsencrypt_region = var.letsencrypt_region
+  letsencrypt_email = var.letsencrypt_email
 }

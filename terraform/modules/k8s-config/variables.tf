@@ -43,3 +43,15 @@ variable "route53_dns_zone" {
 variable "letsencrypt_email" {
   type = string
 }
+
+variable "istio_version" {
+  type = string
+}
+
+variable "argo_version" {
+  type = string
+}
+
+variable "certmanager_version" {
+  type = string
+}

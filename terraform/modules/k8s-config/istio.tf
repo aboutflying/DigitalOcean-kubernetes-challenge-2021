@@ -26,6 +26,7 @@ resource "helm_release" "istio_base" {
 
   repository = local.istio_chart_repo
   chart      = "base"
+  version    = var.istio_version
 
   depends_on = [kubernetes_namespace.istio_system]
 }
@@ -36,6 +37,7 @@ resource "helm_release" "istiod" {
 
   repository = local.istio_chart_repo
   chart      = "istiod"
+  version    = var.istio_version
 
   atomic = true
 
@@ -48,6 +50,7 @@ resource "helm_release" "istio_ingress" {
 
   repository = local.istio_chart_repo
   chart      = "gateway"
+  version    = var.istio_version
 
   atomic = true
 

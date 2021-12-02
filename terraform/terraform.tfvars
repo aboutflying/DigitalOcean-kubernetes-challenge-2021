@@ -13,3 +13,7 @@ argo_applicationset_controller_manifest_url = "https://raw.githubusercontent.com
 
 route53_region   = "us-east-1"
 route53_dns_zone = "invisitr.com"
+
+istio_version       = "1.12.0"
+certmanager_version = "1.6.1"
+argo_version        = "3.26.12"
