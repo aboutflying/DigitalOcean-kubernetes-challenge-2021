@@ -1,6 +1,10 @@
 resource "kubernetes_namespace" "argocd" {
   metadata {
     name = "argocd"
+
+    labels = {
+      istio-injection = "enabled"
+    }
   }
 }
 
@@ -52,4 +56,4 @@ resource "kubectl_manifest" "argo_applicationset_controller" {
   override_namespace = "argocd"
 }
 
-# need VS and gateway
+# need VS, gateway and certificate

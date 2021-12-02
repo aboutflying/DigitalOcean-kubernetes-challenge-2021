@@ -15,5 +15,31 @@ variable "argo_applicationset_controller_manifest_url" {
 }
 
 variable "argo_url" {
-  type    = string
+  type = string
+}
+
+variable "route53_credentials_secret_access_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "route53_credentials_access_key_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "route53_hosted_zone_id" {
+  type = string
+}
+
+variable "route53_region" {
+  type = string
+}
+
+variable "route53_dns_zone" {
+  type = string
+}
+
+variable "letsencrypt_email" {
+  type = string
 }
