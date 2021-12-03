@@ -188,7 +188,8 @@ resource "kubernetes_manifest" "applicationset_tekton_pipelines" {
     "apiVersion" = "argoproj.io/v1alpha1"
     "kind"       = "ApplicationSet"
     "metadata" = {
-      "name" = "tekton-pipelines"
+      "name"      = "tekton-pipelines"
+      "namespace" = "argocd"
     }
     "spec" = {
       "generators" = [
@@ -217,7 +218,25 @@ resource "kubernetes_manifest" "applicationset_tekton_pipelines" {
             "path"           = "tekton-pipelines"
             "repoURL"        = var.argo_repo_url
             "targetRevision" = "HEAD"
+            "directory" = {
+              "recurse" = "true"
+            }
           }
+          "syncPolicy" = {
+            "automated" = {
+              "prune" = "true"
+            }
+          }
+          "ignoreDifferences" = [
+            {
+              "group" = "tekton.dev"
+              "kind"  = "TaskRun"
+            },
+            {
+              "group" = "tekton.dev"
+              "kind"  = "PipelineRun"
+            }
+          ]
         }
       }
     }

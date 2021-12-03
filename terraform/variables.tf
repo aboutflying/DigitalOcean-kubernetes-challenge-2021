@@ -93,3 +93,7 @@ variable "ssh_private_key_path" {
 variable "tekton_manifest_url" {
   type = string
 }
+
+variable "tekton_dashboard_manifest_url" {
+  type = string
+}
