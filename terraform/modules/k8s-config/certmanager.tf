@@ -24,7 +24,7 @@ resource "helm_release" "cert_manager" {
   atomic           = true
 }
 
-resource "kubernetes_secret_v1" "example" {
+resource "kubernetes_secret_v1" "route53_credentials_secret" {
   metadata {
     name      = "prod-route53-credentials-secret"
     namespace = "cert-manager"

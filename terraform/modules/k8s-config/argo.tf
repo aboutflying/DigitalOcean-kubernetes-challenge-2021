@@ -46,12 +46,12 @@ data "http" "argo_applicationset_controller_manifest" {
   url = var.argo_applicationset_controller_manifest_url
 }
 
-data "kubectl_file_documents" "docs" {
+data "kubectl_file_documents" "argo_applicationset_controller_docs" {
   content = data.http.argo_applicationset_controller_manifest.body
 }
 
 resource "kubectl_manifest" "argo_applicationset_controller" {
-  for_each  = data.kubectl_file_documents.docs.manifests
+  for_each  = data.kubectl_file_documents.argo_applicationset_controller_docs.manifests
   yaml_body = each.value
 
   override_namespace = "argocd"
@@ -86,9 +86,9 @@ resource "kubernetes_manifest" "certificate_istio_ingress_argo_certificate" {
 resource "kubernetes_manifest" "virtualservice_argocd" {
   manifest = {
     "apiVersion" = "networking.istio.io/v1alpha3"
-    "kind" = "VirtualService"
+    "kind"       = "VirtualService"
     "metadata" = {
-      "name" = "argocd"
+      "name"      = "argocd"
       "namespace" = "argocd"
     }
     "spec" = {
@@ -121,9 +121,9 @@ resource "kubernetes_manifest" "virtualservice_argocd" {
 resource "kubernetes_manifest" "gateway_argocd" {
   manifest = {
     "apiVersion" = "networking.istio.io/v1alpha3"
-    "kind" = "Gateway"
+    "kind"       = "Gateway"
     "metadata" = {
-      "name" = "argocd"
+      "name"      = "argocd"
       "namespace" = "argocd"
     }
     "spec" = {
@@ -136,8 +136,8 @@ resource "kubernetes_manifest" "gateway_argocd" {
             "argo.${var.route53_dns_zone}",
           ]
           "port" = {
-            "name" = "http"
-            "number" = 80
+            "name"     = "http"
+            "number"   = 80
             "protocol" = "HTTP"
           }
           "tls" = {
@@ -149,13 +149,13 @@ resource "kubernetes_manifest" "gateway_argocd" {
             "argo.${var.route53_dns_zone}",
           ]
           "port" = {
-            "name" = "https"
-            "number" = 443
+            "name"     = "https"
+            "number"   = 443
             "protocol" = "HTTPS"
           }
           "tls" = {
             "credentialName" = "argo-certificate"
-            "mode" = "SIMPLE"
+            "mode"           = "SIMPLE"
           }
         },
       ]
@@ -163,4 +163,63 @@ resource "kubernetes_manifest" "gateway_argocd" {
   }
 
   depends_on = [helm_release.istio_ingress]
+}
+
+resource "kubernetes_secret_v1" "argo_repository_secret" {
+  metadata {
+    name      = "k8s-challenge-repo"
+    namespace = "argocd"
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
+  }
+
+  data = {
+    url           = var.argo_repo_url
+    sshPrivateKey = "${file(var.ssh_private_key_path)}"
+    type          = "git"
+  }
+
+  depends_on = [helm_release.argocd]
+}
+
+resource "kubernetes_manifest" "applicationset_tekton_pipelines" {
+  manifest = {
+    "apiVersion" = "argoproj.io/v1alpha1"
+    "kind"       = "ApplicationSet"
+    "metadata" = {
+      "name" = "tekton-pipelines"
+    }
+    "spec" = {
+      "generators" = [
+        {
+          "list" = {
+            "elements" = [
+              {
+                "cluster" = "in-cluster"
+                "url"     = "https://kubernetes.default.svc"
+              },
+            ]
+          }
+        },
+      ]
+      "template" = {
+        "metadata" = {
+          "name" = "tekton-pipelines"
+        }
+        "spec" = {
+          "destination" = {
+            "namespace" = "tekton-pipelines"
+            "server"    = "{{url}}"
+          }
+          "project" = "default"
+          "source" = {
+            "path"           = "tekton-pipelines"
+            "repoURL"        = var.argo_repo_url
+            "targetRevision" = "HEAD"
+          }
+        }
+      }
+    }
+  }
 }

@@ -81,3 +81,15 @@ variable "argo_version" {
 variable "certmanager_version" {
   type = string
 }
+
+variable "argo_repo_url" {
+  type = string
+}
+
+variable "ssh_private_key_path" {
+  type = string
+}
+
+variable "tekton_manifest_url" {
+  type = string
+}

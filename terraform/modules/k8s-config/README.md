@@ -25,13 +25,20 @@ No modules.
 | Name | Type |
 |------|------|
 | [helm_release.argocd](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
+| [helm_release.cert_manager](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [helm_release.istio_base](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [helm_release.istio_ingress](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [helm_release.istiod](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [kubectl_manifest.argo_applicationset_controller](https://registry.terraform.io/providers/gavinbunney/kubectl/1.13.1/docs/resources/manifest) | resource |
+| [kubernetes_manifest.certificate_istio_ingress_argo_certificate](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.clusterissuer_letsencrypt_prod](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.gateway_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.virtualservice_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_namespace.argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
 | [kubernetes_namespace.istio_ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
 | [kubernetes_namespace.istio_system](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
+| [kubernetes_secret_v1.argo_repository_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/secret_v1) | resource |
+| [kubernetes_secret_v1.route53_credentials_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/secret_v1) | resource |
 | [http_http.argo_applicationset_controller_manifest](https://registry.terraform.io/providers/hashicorp/http/2.1.0/docs/data-sources/http) | data source |
 | [kubectl_file_documents.docs](https://registry.terraform.io/providers/gavinbunney/kubectl/1.13.1/docs/data-sources/file_documents) | data source |
 
@@ -40,10 +47,21 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_argo_applicationset_controller_manifest_url"></a> [argo\_applicationset\_controller\_manifest\_url](#input\_argo\_applicationset\_controller\_manifest\_url) | n/a | `string` | n/a | yes |
-| <a name="input_argo_url"></a> [argo\_url](#input\_argo\_url) | n/a | `string` | `""` | no |
+| <a name="input_argo_repo_url"></a> [argo\_repo\_url](#input\_argo\_repo\_url) | n/a | `string` | n/a | yes |
+| <a name="input_argo_url"></a> [argo\_url](#input\_argo\_url) | n/a | `string` | n/a | yes |
+| <a name="input_argo_version"></a> [argo\_version](#input\_argo\_version) | n/a | `string` | n/a | yes |
+| <a name="input_certmanager_version"></a> [certmanager\_version](#input\_certmanager\_version) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_ca_certificate"></a> [cluster\_ca\_certificate](#input\_cluster\_ca\_certificate) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_host"></a> [cluster\_host](#input\_cluster\_host) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_token"></a> [cluster\_token](#input\_cluster\_token) | n/a | `string` | n/a | yes |
+| <a name="input_istio_version"></a> [istio\_version](#input\_istio\_version) | n/a | `string` | n/a | yes |
+| <a name="input_letsencrypt_email"></a> [letsencrypt\_email](#input\_letsencrypt\_email) | n/a | `string` | n/a | yes |
+| <a name="input_route53_credentials_access_key_id"></a> [route53\_credentials\_access\_key\_id](#input\_route53\_credentials\_access\_key\_id) | n/a | `string` | n/a | yes |
+| <a name="input_route53_credentials_secret_access_key"></a> [route53\_credentials\_secret\_access\_key](#input\_route53\_credentials\_secret\_access\_key) | n/a | `string` | n/a | yes |
+| <a name="input_route53_dns_zone"></a> [route53\_dns\_zone](#input\_route53\_dns\_zone) | n/a | `string` | n/a | yes |
+| <a name="input_route53_hosted_zone_id"></a> [route53\_hosted\_zone\_id](#input\_route53\_hosted\_zone\_id) | n/a | `string` | n/a | yes |
+| <a name="input_route53_region"></a> [route53\_region](#input\_route53\_region) | n/a | `string` | n/a | yes |
+| <a name="input_ssh_private_key_path"></a> [ssh\_private\_key\_path](#input\_ssh\_private\_key\_path) | n/a | `string` | n/a | yes |
 
 ## Outputs
 

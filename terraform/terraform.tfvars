@@ -9,7 +9,10 @@ node_size      = "s-2vcpu-4gb"
 node_count     = 3
 
 argo_url                                    = "https://argo.invisitr.com"
+argo_repo_url                               = "git@github.com:aboutflying/DigitalOcean-kubernetes-challenge-2021.git"
 argo_applicationset_controller_manifest_url = "https://raw.githubusercontent.com/argoproj-labs/applicationset/v0.2.0/manifests/install.yaml"
+
+tekton_manifest_url = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.30.0/release.yaml"
 
 route53_region   = "us-east-1"
 route53_dns_zone = "invisitr.com"
