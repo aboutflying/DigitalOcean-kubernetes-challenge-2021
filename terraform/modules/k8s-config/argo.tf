@@ -37,6 +37,12 @@ resource "helm_release" "argocd" {
     value = var.argo_url == "" ? "https://argocd.example.com" : var.argo_url
   }
 
+  set {
+    name  = "server.config.admin\\.enabled"
+    value = "false"
+    type = "string"
+  }
+
   atomic = true
 
   depends_on = [kubernetes_namespace.argocd]
@@ -224,7 +230,7 @@ resource "kubernetes_manifest" "applicationset_tekton_pipelines" {
           }
           "syncPolicy" = {
             "automated" = {
-              "prune" = "true"
+              "prune" = "false"
             }
           }
           "ignoreDifferences" = [
