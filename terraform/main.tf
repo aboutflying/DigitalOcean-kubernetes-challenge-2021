@@ -1,9 +1,9 @@
 terraform {
   backend "remote" {
-    organization = "invisitr"
+    organization = var.terraform_org
 
     workspaces {
-      name = "do-k8s-challenge-2021"
+      name = var.cluster_name
     }
   }
 }

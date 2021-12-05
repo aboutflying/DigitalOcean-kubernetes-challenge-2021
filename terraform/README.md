@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 No requirements.
@@ -28,6 +29,7 @@ No resources.
 | <a name="input_certmanager_version"></a> [certmanager\_version](#input\_certmanager\_version) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | A name for the Kubernetes cluster | `string` | n/a | yes |
 | <a name="input_cluster_region"></a> [cluster\_region](#input\_cluster\_region) | The slug identifier for the region where the Kubernetes cluster will be created | `string` | n/a | yes |
+| <a name="input_do_token"></a> [do\_token](#input\_do\_token) | n/a | `string` | n/a | yes |
 | <a name="input_istio_version"></a> [istio\_version](#input\_istio\_version) | n/a | `string` | n/a | yes |
 | <a name="input_letsencrypt_email"></a> [letsencrypt\_email](#input\_letsencrypt\_email) | n/a | `string` | n/a | yes |
 | <a name="input_node_count"></a> [node\_count](#input\_node\_count) | The number of Droplet instances in the node pool | `number` | n/a | yes |
@@ -40,8 +42,9 @@ No resources.
 | <a name="input_route53_dns_zone"></a> [route53\_dns\_zone](#input\_route53\_dns\_zone) | n/a | `string` | n/a | yes |
 | <a name="input_route53_hosted_zone_id"></a> [route53\_hosted\_zone\_id](#input\_route53\_hosted\_zone\_id) | n/a | `string` | n/a | yes |
 | <a name="input_route53_region"></a> [route53\_region](#input\_route53\_region) | n/a | `string` | n/a | yes |
-| <a name="input_ssh_private_key"></a> [ssh\_private\_key\_path](#input\_ssh\_private\_key\_path) | n/a | `string` | n/a | yes |
+| <a name="input_ssh_private_key"></a> [ssh\_private\_key](#input\_ssh\_private\_key) | n/a | `string` | n/a | yes |
 
 ## Outputs
 
 No outputs.
+<!-- END_TF_DOCS -->

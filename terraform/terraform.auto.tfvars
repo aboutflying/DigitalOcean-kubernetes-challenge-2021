@@ -1,3 +1,5 @@
+terraform_org = "invisitr"
+
 project_name        = "DigitalOcean Kubernetes Challenge 2021"
 project_description = "Demonstrates a GitOps CI/CD implementation"
 
