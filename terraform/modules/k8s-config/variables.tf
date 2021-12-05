@@ -63,19 +63,3 @@ variable "argo_repo_url" {
 variable "ssh_private_key_path" {
   type = string
 }
-
-variable "tekton_manifest_url" {
-  type = string
-}
-
-variable "tekton_dashboard_manifest_url" {
-  type = string
-}
-
-variable "tekton_triggers_release_manifest_url" {
-  type = string
-}
-
-variable "tekton_triggers_interceptors_manifest_url" {
-  type = string
-}
