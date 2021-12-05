@@ -1,3 +1,8 @@
+variable "do_token" {
+  type      = string
+  sensitive = true
+}
+
 variable "project_name" {
   type        = string
   description = "The name of the DO project"
@@ -55,7 +60,8 @@ variable "route53_credentials_access_key_id" {
 }
 
 variable "route53_hosted_zone_id" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "route53_region" {
@@ -67,7 +73,8 @@ variable "route53_dns_zone" {
 }
 
 variable "letsencrypt_email" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "istio_version" {
@@ -86,6 +93,7 @@ variable "argo_repo_url" {
   type = string
 }
 
-variable "ssh_private_key_path" {
-  type = string
+variable "ssh_private_key" {
+  type      = string
+  sensitive = true
 }

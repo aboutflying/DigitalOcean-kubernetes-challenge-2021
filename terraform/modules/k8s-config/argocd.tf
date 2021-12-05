@@ -182,7 +182,7 @@ resource "kubernetes_secret_v1" "argo_repository_secret" {
 
   data = {
     url           = var.argo_repo_url
-    sshPrivateKey = "${file(var.ssh_private_key_path)}"
+    sshPrivateKey = var.ssh_private_key
     type          = "git"
   }
 

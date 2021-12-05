@@ -1,5 +1,17 @@
+terraform {
+  backend "remote" {
+    organization = "invisitr"
+
+    workspaces {
+      name = "do-k8s-challenge-2021"
+    }
+  }
+}
+
 module "do" {
   source = "./modules/do-config"
+
+  do_token = var.do_token
 
   project_name        = var.project_name
   project_description = var.project_description
@@ -26,7 +38,7 @@ module "k8s-config" {
   argo_repo_url                               = var.argo_repo_url
   argo_applicationset_controller_manifest_url = var.argo_applicationset_controller_manifest_url
 
-  ssh_private_key_path = var.ssh_private_key_path
+  ssh_private_key = var.ssh_private_key
 
   certmanager_version = var.certmanager_version
 
