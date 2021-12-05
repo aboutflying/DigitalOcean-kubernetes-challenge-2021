@@ -26,8 +26,10 @@ module "k8s-config" {
   argo_repo_url                               = var.argo_repo_url
   argo_applicationset_controller_manifest_url = var.argo_applicationset_controller_manifest_url
 
-  tekton_manifest_url           = var.tekton_manifest_url
-  tekton_dashboard_manifest_url = var.tekton_dashboard_manifest_url
+  tekton_manifest_url                       = var.tekton_manifest_url
+  tekton_dashboard_manifest_url             = var.tekton_dashboard_manifest_url
+  tekton_triggers_release_manifest_url      = var.tekton_triggers_release_manifest_url
+  tekton_triggers_interceptors_manifest_url = var.tekton_triggers_interceptors_manifest_url
 
   ssh_private_key_path = var.ssh_private_key_path
 

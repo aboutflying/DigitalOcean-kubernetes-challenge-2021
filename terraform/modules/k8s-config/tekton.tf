@@ -1,3 +1,5 @@
+# tekton pipelines
+
 data "http" "tekton_manifest" {
   url = var.tekton_manifest_url
 }
@@ -10,6 +12,8 @@ resource "kubectl_manifest" "tekton" {
   for_each  = data.kubectl_file_documents.tekton_docs.manifests
   yaml_body = each.value
 }
+
+# tekton dashboard
 
 data "http" "tekton_dashboard_manifest" {
   url = var.tekton_dashboard_manifest_url
@@ -131,4 +135,34 @@ resource "kubernetes_manifest" "gateway_tekton" {
   }
 
   depends_on = [helm_release.istio_ingress]
+}
+
+# tekton triggers
+
+data "http" "tekton_triggers_release_manifest" {
+  url = var.tekton_triggers_release_manifest_url
+}
+
+data "kubectl_file_documents" "tekton_triggers_release_docs" {
+  content = data.http.tekton_triggers_release_manifest.body
+}
+
+resource "kubectl_manifest" "tekton_triggers_release" {
+  for_each   = data.kubectl_file_documents.tekton_triggers_release_docs.manifests
+  yaml_body  = each.value
+  depends_on = [kubectl_manifest.tekton]
+}
+
+data "http" "tekton_triggers_interceptors_manifest" {
+  url = var.tekton_triggers_interceptors_manifest_url
+}
+
+data "kubectl_file_documents" "tekton_triggers_interceptors_docs" {
+  content = data.http.tekton_triggers_interceptors_manifest.body
+}
+
+resource "kubectl_manifest" "tekton_triggers_interceptors" {
+  for_each   = data.kubectl_file_documents.tekton_triggers_interceptors_docs.manifests
+  yaml_body  = each.value
+  depends_on = [kubectl_manifest.tekton_triggers_release]
 }

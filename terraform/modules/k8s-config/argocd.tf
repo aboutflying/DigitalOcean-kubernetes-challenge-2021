@@ -40,7 +40,7 @@ resource "helm_release" "argocd" {
   set {
     name  = "server.config.admin\\.enabled"
     value = "false"
-    type = "string"
+    type  = "string"
   }
 
   atomic = true
@@ -73,7 +73,7 @@ resource "kubernetes_manifest" "certificate_istio_ingress_argo_certificate" {
     }
     "spec" = {
       "dnsNames" = [
-        "argo.${var.route53_dns_zone}",
+        "cd.${var.route53_dns_zone}",
       ]
       "issuerRef" = {
         "kind" = "ClusterIssuer"
@@ -102,7 +102,7 @@ resource "kubernetes_manifest" "virtualservice_argocd" {
         "argocd",
       ]
       "hosts" = [
-        "argo.${var.route53_dns_zone}",
+        "cd.${var.route53_dns_zone}",
       ]
       "http" = [
         {
@@ -139,7 +139,7 @@ resource "kubernetes_manifest" "gateway_argocd" {
       "servers" = [
         {
           "hosts" = [
-            "argo.${var.route53_dns_zone}",
+            "cd.${var.route53_dns_zone}",
           ]
           "port" = {
             "name"     = "http"
@@ -152,7 +152,7 @@ resource "kubernetes_manifest" "gateway_argocd" {
         },
         {
           "hosts" = [
-            "argo.${var.route53_dns_zone}",
+            "cd.${var.route53_dns_zone}",
           ]
           "port" = {
             "name"     = "https"

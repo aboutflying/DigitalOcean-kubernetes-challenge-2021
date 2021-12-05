@@ -97,3 +97,11 @@ variable "tekton_manifest_url" {
 variable "tekton_dashboard_manifest_url" {
   type = string
 }
+
+variable "tekton_triggers_release_manifest_url" {
+  type = string
+}
+
+variable "tekton_triggers_interceptors_manifest_url" {
+  type = string
+}
