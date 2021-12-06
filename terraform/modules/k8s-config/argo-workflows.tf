@@ -18,7 +18,7 @@ resource "helm_release" "argo" {
   }
 
   set {
-    name  = "workflowNamespaces"
+    name  = "controller.workflowNamespaces"
     value = "{argo}"
   }
 

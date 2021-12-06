@@ -25,7 +25,8 @@ No resources.
 | <a name="input_argo_applicationset_controller_manifest_url"></a> [argo\_applicationset\_controller\_manifest\_url](#input\_argo\_applicationset\_controller\_manifest\_url) | URL to the Argo CD ApplicationSet Controller manifest | `string` | n/a | yes |
 | <a name="input_argo_repo_url"></a> [argo\_repo\_url](#input\_argo\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_argo_url"></a> [argo\_url](#input\_argo\_url) | Argo CD's externally facing base URL (optional) | `string` | `""` | no |
-| <a name="input_argocd_version"></a> [argo\_version](#input\_argo\_version) | n/a | `string` | n/a | yes |
+| <a name="input_argo_workflows_version"></a> [argo\_workflows\_version](#input\_argo\_workflows\_version) | n/a | `string` | n/a | yes |
+| <a name="input_argocd_version"></a> [argocd\_version](#input\_argocd\_version) | n/a | `string` | n/a | yes |
 | <a name="input_certmanager_version"></a> [certmanager\_version](#input\_certmanager\_version) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | A name for the Kubernetes cluster | `string` | n/a | yes |
 | <a name="input_cluster_region"></a> [cluster\_region](#input\_cluster\_region) | The slug identifier for the region where the Kubernetes cluster will be created | `string` | n/a | yes |
@@ -43,6 +44,7 @@ No resources.
 | <a name="input_route53_hosted_zone_id"></a> [route53\_hosted\_zone\_id](#input\_route53\_hosted\_zone\_id) | n/a | `string` | n/a | yes |
 | <a name="input_route53_region"></a> [route53\_region](#input\_route53\_region) | n/a | `string` | n/a | yes |
 | <a name="input_ssh_private_key"></a> [ssh\_private\_key](#input\_ssh\_private\_key) | n/a | `string` | n/a | yes |
+| <a name="input_terraform_org"></a> [terraform\_org](#input\_terraform\_org) | n/a | `string` | n/a | yes |
 
 ## Outputs
 

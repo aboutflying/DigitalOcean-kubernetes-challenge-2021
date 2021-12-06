@@ -94,6 +94,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [helm_release.argo](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [helm_release.argocd](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [helm_release.cert_manager](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [helm_release.istio_base](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
@@ -120,7 +121,8 @@ No modules.
 | <a name="input_argo_applicationset_controller_manifest_url"></a> [argo\_applicationset\_controller\_manifest\_url](#input\_argo\_applicationset\_controller\_manifest\_url) | n/a | `string` | n/a | yes |
 | <a name="input_argo_repo_url"></a> [argo\_repo\_url](#input\_argo\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_argo_url"></a> [argo\_url](#input\_argo\_url) | n/a | `string` | n/a | yes |
-| <a name="input_argocd_version"></a> [argo\_version](#input\_argo\_version) | n/a | `string` | n/a | yes |
+| <a name="input_argo_workflows_version"></a> [argo\_workflows\_version](#input\_argo\_workflows\_version) | n/a | `string` | n/a | yes |
+| <a name="input_argocd_version"></a> [argocd\_version](#input\_argocd\_version) | n/a | `string` | n/a | yes |
 | <a name="input_certmanager_version"></a> [certmanager\_version](#input\_certmanager\_version) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_ca_certificate"></a> [cluster\_ca\_certificate](#input\_cluster\_ca\_certificate) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_host"></a> [cluster\_host](#input\_cluster\_host) | n/a | `string` | n/a | yes |
