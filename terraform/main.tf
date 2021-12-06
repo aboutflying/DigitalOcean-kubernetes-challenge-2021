@@ -33,7 +33,8 @@ module "k8s-config" {
 
   istio_version = var.istio_version
 
-  argo_version                                = var.argo_version
+  argo_workflows_version                      = var.argo_workflows_version
+  argocd_version                              = var.argocd_version
   argo_url                                    = var.argo_url
   argo_repo_url                               = var.argo_repo_url
   argo_applicationset_controller_manifest_url = var.argo_applicationset_controller_manifest_url

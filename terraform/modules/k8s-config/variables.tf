@@ -48,7 +48,11 @@ variable "istio_version" {
   type = string
 }
 
-variable "argo_version" {
+variable "argo_workflows_version" {
+  type = string
+}
+
+variable "argocd_version" {
   type = string
 }
 
@@ -61,6 +65,6 @@ variable "argo_repo_url" {
 }
 
 variable "ssh_private_key" {
-  type = string
+  type      = string
   sensitive = true
 }

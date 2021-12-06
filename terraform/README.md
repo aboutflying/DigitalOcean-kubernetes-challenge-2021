@@ -25,7 +25,7 @@ No resources.
 | <a name="input_argo_applicationset_controller_manifest_url"></a> [argo\_applicationset\_controller\_manifest\_url](#input\_argo\_applicationset\_controller\_manifest\_url) | URL to the Argo CD ApplicationSet Controller manifest | `string` | n/a | yes |
 | <a name="input_argo_repo_url"></a> [argo\_repo\_url](#input\_argo\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_argo_url"></a> [argo\_url](#input\_argo\_url) | Argo CD's externally facing base URL (optional) | `string` | `""` | no |
-| <a name="input_argo_version"></a> [argo\_version](#input\_argo\_version) | n/a | `string` | n/a | yes |
+| <a name="input_argocd_version"></a> [argo\_version](#input\_argo\_version) | n/a | `string` | n/a | yes |
 | <a name="input_certmanager_version"></a> [certmanager\_version](#input\_certmanager\_version) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | A name for the Kubernetes cluster | `string` | n/a | yes |
 | <a name="input_cluster_region"></a> [cluster\_region](#input\_cluster\_region) | The slug identifier for the region where the Kubernetes cluster will be created | `string` | n/a | yes |

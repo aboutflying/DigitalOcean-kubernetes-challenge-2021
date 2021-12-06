@@ -14,7 +14,7 @@ resource "helm_release" "argocd" {
 
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
-  version    = var.argo_version
+  version    = var.argocd_version
 
   set {
     name  = "server.extraArgs"

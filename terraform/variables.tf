@@ -1,3 +1,7 @@
+variable "terraform_org" {
+  type = string
+}
+
 variable "do_token" {
   type      = string
   sensitive = true
@@ -81,7 +85,11 @@ variable "istio_version" {
   type = string
 }
 
-variable "argo_version" {
+variable "argo_workflows_version" {
+  type = string
+}
+
+variable "argocd_version" {
   type = string
 }
 
