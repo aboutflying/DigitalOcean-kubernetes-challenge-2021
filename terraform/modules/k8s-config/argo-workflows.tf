@@ -26,3 +26,53 @@ resource "helm_release" "argo" {
 
   depends_on = [kubernetes_namespace.argo]
 }
+
+resource "kubernetes_manifest" "applicationset_argo_workflows" {
+  manifest = {
+    "apiVersion" = "argoproj.io/v1alpha1"
+    "kind"       = "ApplicationSet"
+    "metadata" = {
+      "name"      = "argo-workflows"
+      "namespace" = "argo"
+    }
+    "spec" = {
+      "generators" = [
+        {
+          "list" = {
+            "elements" = [
+              {
+                "cluster" = "in-cluster"
+                "url"     = "https://kubernetes.default.svc"
+              },
+            ]
+          }
+        },
+      ]
+      "template" = {
+        "metadata" = {
+          "name" = "argo-workflows"
+        }
+        "spec" = {
+          "destination" = {
+            "namespace" = "argo-workflows"
+            "server"    = "{{url}}"
+          }
+          "project" = "default"
+          "source" = {
+            "path"           = "argo-workflows"
+            "repoURL"        = var.argo_repo_url
+            "targetRevision" = "HEAD"
+            "directory" = {
+              "recurse" = "true"
+            }
+          }
+          "syncPolicy" = {
+            "automated" = {
+              "prune" = "false"
+            }
+          }
+        }
+      }
+    }
+  }
+}
