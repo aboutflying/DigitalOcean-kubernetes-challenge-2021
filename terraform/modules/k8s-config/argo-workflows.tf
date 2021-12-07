@@ -23,12 +23,18 @@ resource "helm_release" "argo" {
   }
 
   set {
-    name = "controller.containerRuntimeExecutor"
+    name  = "controller.containerRuntimeExecutor"
     value = "k8sapi"
   }
 
   set {
-    name = "controller.workflowDefaults.spec.serviceAccountName"
+    name  = "workflow.serviceAccount.create"
+    value = "true"
+    type  = "string"
+  }
+
+  set {
+    name  = "controller.workflowDefaults.spec.serviceAccountName"
     value = "argo-workflow"
   }
 
