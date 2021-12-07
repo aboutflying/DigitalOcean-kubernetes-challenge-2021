@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: istio-success-rate
+  namespace: rollouts-demo-istio
 spec:
   # this analysis template requires a service name and namespace to be supplied to the query
   args:

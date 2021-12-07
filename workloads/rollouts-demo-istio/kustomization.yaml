@@ -9,5 +9,4 @@ resources:
 - virtualservice.yaml
 - rollout.yaml
 - destinationrule.yaml
-
-namespace: rollouts-demo-istio
+- certificate.yaml

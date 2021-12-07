@@ -2,13 +2,25 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: istio-rollout-gateway
+  namespace: rollouts-demo-istio
 spec:
   selector:
-    istio: ingressgateway
+    istio: ingress
   servers:
-  - port:
-      number: 80
-      name: http
-      protocol: HTTP
-    hosts:
-    - "demo-app.invisitr.com"
+    - hosts:
+        - demo-app.invisitr.com
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+    - hosts:
+        - demo-app.invisitr.com
+      port:
+        name: https
+        number: 443
+        protocol: HTTPS
+      tls:
+        credentialName: demo-app-certificate
+        mode: SIMPLE
