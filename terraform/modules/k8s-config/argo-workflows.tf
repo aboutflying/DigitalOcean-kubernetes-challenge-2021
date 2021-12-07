@@ -27,6 +27,11 @@ resource "helm_release" "argo" {
     value = "k8sapi"
   }
 
+  set {
+    name = "controller.workflowDefaults.spec.serviceAccountName"
+    value = "argo-workflow"
+  }
+
   atomic = true
 
   depends_on = [kubernetes_namespace.argo]
