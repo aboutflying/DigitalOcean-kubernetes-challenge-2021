@@ -5,7 +5,7 @@ metadata:
   namespace: rollouts-demo-istio
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    link.argocd.argoproj.io/external-link: https:/demo-app.invisitr.com
+    link.argocd.argoproj.io/external-link: https://demo-app.invisitr.com
 spec:
   revisionHistoryLimit: 2
   selector:
