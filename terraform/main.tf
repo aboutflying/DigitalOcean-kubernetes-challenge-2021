@@ -35,6 +35,7 @@ module "k8s-config" {
 
   argo_workflows_version                      = var.argo_workflows_version
   argocd_version                              = var.argocd_version
+  argo_rollouts_version                       = var.argo_rollouts_version
   argo_url                                    = var.argo_url
   argo_repo_url                               = var.argo_repo_url
   argo_applicationset_controller_manifest_url = var.argo_applicationset_controller_manifest_url

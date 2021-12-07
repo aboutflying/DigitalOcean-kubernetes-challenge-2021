@@ -89,6 +89,10 @@ variable "argo_workflows_version" {
   type = string
 }
 
+variable "argo_rollouts_version" {
+  type = string
+}
+
 variable "argocd_version" {
   type = string
 }
