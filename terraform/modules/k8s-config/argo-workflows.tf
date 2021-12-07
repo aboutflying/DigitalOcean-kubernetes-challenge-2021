@@ -19,7 +19,12 @@ resource "helm_release" "argo" {
 
   set {
     name  = "controller.workflowNamespaces"
-    value = "{default,argo}"
+    value = "{argo}"
+  }
+
+  set {
+    name = "controller.containerRuntimeExecutor"
+    value = "k8sapi"
   }
 
   atomic = true
