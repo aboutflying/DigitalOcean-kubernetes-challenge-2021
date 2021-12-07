@@ -7,10 +7,10 @@ spec:
   generators:
     - matrix:
         generators: 
-          - clusters:
-              selector:
-                matchLabels:
-                  argocd.argoproj.io/secret-type: cluster
+          - list:
+              elements:
+                - cluster: in-cluster
+                  url: https://kubernetes.default.svc
           - git:
               repoURL: https://github.com/aboutflying/DigitalOcean-kubernetes-challenge-2021.git
               revision: HEAD
@@ -18,15 +18,15 @@ spec:
                 - path: workloads/*
   template:
     metadata:
-      name: '{{path.basename}}-{{name}}'
+      name: '{{path.basename}}-{{cluster}}'
     spec:
-      project: '{{metadata.labels.environment}}'
+      project: default
       source:
         repoURL: git@github.com:aboutflying/DigitalOcean-kubernetes-challenge-2021.git
         targetRevision: HEAD
         path: '{{path}}'
       destination:
-        server: '{{server}}'
+        server: '{{url}}'
         namespace: '{{path.basename}}'
       syncPolicy:
         automated:
