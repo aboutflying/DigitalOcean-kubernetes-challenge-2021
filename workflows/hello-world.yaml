@@ -5,8 +5,8 @@ metadata:
   labels:
     workflows.argoproj.io/archive-strategy: "false"
   annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: HookFailed
     workflows.argoproj.io/description: |
       This is a simple hello world example.
       You can also run it in Python: https://couler-proj.github.io/couler/examples/#hello-world
