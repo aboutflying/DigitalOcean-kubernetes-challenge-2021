@@ -33,7 +33,7 @@ resource "kubernetes_manifest" "applicationset_argo_workflows" {
     "kind"       = "ApplicationSet"
     "metadata" = {
       "name"      = "argo-workflows"
-      "namespace" = "argo"
+      "namespace" = "argocd"
     }
     "spec" = {
       "generators" = [
@@ -54,12 +54,12 @@ resource "kubernetes_manifest" "applicationset_argo_workflows" {
         }
         "spec" = {
           "destination" = {
-            "namespace" = "argo-workflows"
+            "namespace" = "argo"
             "server"    = "{{url}}"
           }
           "project" = "default"
           "source" = {
-            "path"           = "argo-workflows"
+            "path"           = "workflows"
             "repoURL"        = var.argo_repo_url
             "targetRevision" = "HEAD"
             "directory" = {
