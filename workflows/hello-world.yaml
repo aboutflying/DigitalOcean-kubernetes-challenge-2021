@@ -5,7 +5,6 @@ metadata:
   labels:
     workflows.argoproj.io/archive-strategy: "false"
   annotations:
-    argocd.argoproj.io/hook: Sync
     workflows.argoproj.io/description: |
       This is a simple hello world example.
       You can also run it in Python: https://couler-proj.github.io/couler/examples/#hello-world
