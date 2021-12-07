@@ -102,6 +102,7 @@ No modules.
 | [helm_release.istio_ingress](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [helm_release.istiod](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [kubectl_manifest.argo_applicationset_controller](https://registry.terraform.io/providers/gavinbunney/kubectl/1.13.1/docs/resources/manifest) | resource |
+| [kubernetes_manifest.applicationset_argo_workflows](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_manifest.certificate_istio_ingress_argo_certificate](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_manifest.clusterissuer_letsencrypt_prod](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_manifest.gateway_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
