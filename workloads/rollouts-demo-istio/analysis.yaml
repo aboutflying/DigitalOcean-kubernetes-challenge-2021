@@ -16,7 +16,7 @@ spec:
     provider:
       prometheus:
         address: http://prometheus.istio-system:9090
-        query: >+
+        query: |
           sum(irate(istio_requests_total{
             reporter="source",
             destination_service=~"{{args.service}}.{{args.namespace}}.svc.cluster.local",
