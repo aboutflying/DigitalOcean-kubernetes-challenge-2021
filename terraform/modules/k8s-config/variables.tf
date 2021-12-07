@@ -48,6 +48,10 @@ variable "istio_version" {
   type = string
 }
 
+variable "istio_prometheus_manifest_url" {
+  type = string
+}
+
 variable "argo_workflows_version" {
   type = string
 }

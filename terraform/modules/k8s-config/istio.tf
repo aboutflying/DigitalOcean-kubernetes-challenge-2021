@@ -56,3 +56,20 @@ resource "helm_release" "istio_ingress" {
 
   depends_on = [helm_release.istiod, kubernetes_namespace.istio_ingress]
 }
+
+# https://istio.io/latest/docs/ops/integrations/prometheus/
+
+data "http" "istio_prometheus_manifest" {
+  url = var.istio_prometheus_manifest_url
+}
+
+data "kubectl_file_documents" "istio_prometheus_docs" {
+  content = data.http.istio_prometheus_manifest.body
+}
+
+resource "kubectl_manifest" "istio_prometheus" {
+  for_each  = data.kubectl_file_documents.istio_prometheus_docs.manifests
+  yaml_body = each.value
+
+  override_namespace = "istio-system"
+}

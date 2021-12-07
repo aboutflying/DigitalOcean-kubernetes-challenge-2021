@@ -31,7 +31,8 @@ module "k8s-config" {
   cluster_token          = module.do.cluster_token
   cluster_ca_certificate = module.do.cluster_ca_certificate
 
-  istio_version = var.istio_version
+  istio_version                 = var.istio_version
+  istio_prometheus_manifest_url = var.istio_prometheus_manifest_url
 
   argo_workflows_version                      = var.argo_workflows_version
   argocd_version                              = var.argocd_version
