@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: workloads
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators: 
+          - list:
+              elements:
+                - cluster: in-cluster
+                  url: https://kubernetes.default.svc
+          - git:
+              repoURL: https://github.com/aboutflying/DigitalOcean-kubernetes-challenge-2021.git
+              revision: HEAD
+              directories:
+                - path: workloads/*
+  template:
+    metadata:
+      name: '{{path.basename}}-{{name}}'
+    spec:
+      project: '{{metadata.labels.environment}}'
+      source:
+        repoURL: git@github.com:aboutflying/DigitalOcean-kubernetes-challenge-2021.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: '{{server}}'
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true

@@ -72,4 +72,6 @@ resource "kubectl_manifest" "istio_prometheus" {
   yaml_body = each.value
 
   override_namespace = "istio-system"
+
+  depends_on = [helm_release.istiod]
 }
