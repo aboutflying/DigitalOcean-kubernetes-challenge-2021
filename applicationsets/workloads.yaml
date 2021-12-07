@@ -7,10 +7,10 @@ spec:
   generators:
     - matrix:
         generators: 
-          - list:
-              elements:
-                - cluster: in-cluster
-                  url: https://kubernetes.default.svc
+          - clusters:
+              selector:
+                matchLabels:
+                  argocd.argoproj.io/secret-type: cluster
           - git:
               repoURL: https://github.com/aboutflying/DigitalOcean-kubernetes-challenge-2021.git
               revision: HEAD
