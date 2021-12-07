@@ -32,6 +32,7 @@ No resources.
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | A name for the Kubernetes cluster | `string` | n/a | yes |
 | <a name="input_cluster_region"></a> [cluster\_region](#input\_cluster\_region) | The slug identifier for the region where the Kubernetes cluster will be created | `string` | n/a | yes |
 | <a name="input_do_token"></a> [do\_token](#input\_do\_token) | n/a | `string` | n/a | yes |
+| <a name="input_istio_prometheus_manifest_url"></a> [istio\_prometheus\_manifest\_url](#input\_istio\_prometheus\_manifest\_url) | n/a | `string` | n/a | yes |
 | <a name="input_istio_version"></a> [istio\_version](#input\_istio\_version) | n/a | `string` | n/a | yes |
 | <a name="input_letsencrypt_email"></a> [letsencrypt\_email](#input\_letsencrypt\_email) | n/a | `string` | n/a | yes |
 | <a name="input_node_count"></a> [node\_count](#input\_node\_count) | The number of Droplet instances in the node pool | `number` | n/a | yes |
