@@ -95,6 +95,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [helm_release.argo](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
+| [helm_release.argo_rollouts](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [helm_release.argocd](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [helm_release.cert_manager](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [helm_release.istio_base](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
@@ -106,6 +107,7 @@ No modules.
 | [kubernetes_manifest.gateway_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_manifest.virtualservice_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_namespace.argo](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
+| [kubernetes_namespace.argo_rollouts](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
 | [kubernetes_namespace.argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
 | [kubernetes_namespace.istio_ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
 | [kubernetes_namespace.istio_system](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
@@ -120,6 +122,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_argo_applicationset_controller_manifest_url"></a> [argo\_applicationset\_controller\_manifest\_url](#input\_argo\_applicationset\_controller\_manifest\_url) | n/a | `string` | n/a | yes |
 | <a name="input_argo_repo_url"></a> [argo\_repo\_url](#input\_argo\_repo\_url) | n/a | `string` | n/a | yes |
+| <a name="input_argo_rollouts_version"></a> [argo\_rollouts\_version](#input\_argo\_rollouts\_version) | n/a | `string` | n/a | yes |
 | <a name="input_argo_url"></a> [argo\_url](#input\_argo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_argo_workflows_version"></a> [argo\_workflows\_version](#input\_argo\_workflows\_version) | n/a | `string` | n/a | yes |
 | <a name="input_argocd_version"></a> [argocd\_version](#input\_argocd\_version) | n/a | `string` | n/a | yes |

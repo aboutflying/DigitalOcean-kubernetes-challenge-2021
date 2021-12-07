@@ -24,6 +24,7 @@ No resources.
 |------|-------------|------|---------|:--------:|
 | <a name="input_argo_applicationset_controller_manifest_url"></a> [argo\_applicationset\_controller\_manifest\_url](#input\_argo\_applicationset\_controller\_manifest\_url) | URL to the Argo CD ApplicationSet Controller manifest | `string` | n/a | yes |
 | <a name="input_argo_repo_url"></a> [argo\_repo\_url](#input\_argo\_repo\_url) | n/a | `string` | n/a | yes |
+| <a name="input_argo_rollouts_version"></a> [argo\_rollouts\_version](#input\_argo\_rollouts\_version) | n/a | `string` | n/a | yes |
 | <a name="input_argo_url"></a> [argo\_url](#input\_argo\_url) | Argo CD's externally facing base URL (optional) | `string` | `""` | no |
 | <a name="input_argo_workflows_version"></a> [argo\_workflows\_version](#input\_argo\_workflows\_version) | n/a | `string` | n/a | yes |
 | <a name="input_argocd_version"></a> [argocd\_version](#input\_argocd\_version) | n/a | `string` | n/a | yes |
