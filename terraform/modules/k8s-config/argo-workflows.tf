@@ -19,7 +19,7 @@ resource "helm_release" "argo" {
 
   set {
     name  = "controller.workflowNamespaces"
-    value = "argo"
+    value = "{default,argo}"
   }
 
   atomic = true
