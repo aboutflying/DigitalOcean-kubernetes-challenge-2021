@@ -339,7 +339,6 @@ resource "kubernetes_manifest" "secret_argo_workflows_webhook_clients" {
       "github.com" = <<-EOT
       type: github
       secret: "${var.github_webhook_secret}"
-      
       EOT
     }
   }
