@@ -51,7 +51,6 @@ resource "kubernetes_manifest" "clusterrole_argo_workflows_server" {
     "kind" = "ClusterRole"
     "metadata" = {
       "name" = "argo-argo-workflows-server"
-      "namespace" = "argo"
     }
     "rules" = [
       {
