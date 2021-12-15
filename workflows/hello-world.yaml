@@ -3,6 +3,7 @@ kind: WorkflowTemplate
 metadata:
   name: workflow-template-submittable
 spec:
+  entrypoint: whalesay-template
   arguments:
     parameters:
       - name: message

@@ -1,14 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: ci
+  name: ci-example
 spec:
+  entrypoint: ci-example
   # the 'ci-example' template accepts an parameter 'revision', with a default of 'cfe12d6'.
   # this can be overridden via argo CLI (e.g. `argo submit ci.yaml -p revision=0dea2d0`)
   arguments:
     parameters:
     - name: revision
       value: cfe12d6
+    - name: message
+      value: "{{workflow.parameters.message}}"
   # a temporary volume, named workdir, will be used as a working directory
   # for this workflow. This volume is passed around from step to step.
   volumeClaimTemplates:
@@ -60,6 +63,7 @@ spec:
       image: golang:1.8
       command: [sh, -c]
       args: ["
+        echo {{inputs.parameters.message}}
         cd /go/src/github.com/golang/example/hello &&
         git status &&
         go build -v .
@@ -82,8 +86,20 @@ spec:
       volumeMounts:
       - name: workdir
         mountPath: /go
-
-
-# workflow to build demo app, push to docker hub
-# https://argoproj.github.io/argo-workflows/events/
-# rollout with canary?
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowEventBinding
+metadata:
+  name: event-consumer-example
+spec:
+  event:
+    # metadata header name must be lowercase to match in selector
+    selector: payload.message != "" && metadata["x-argo-e2e"] == ["true"] && discriminator == "my-discriminator"
+  submit:
+    workflowTemplateRef:
+      name: ci-example
+    arguments:
+      parameters:
+      - name: message
+        valueFrom:
+          event: payload.message
