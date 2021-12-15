@@ -75,7 +75,7 @@ No outputs.
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.4.1 |
 | <a name="requirement_http"></a> [http](#requirement\_http) | 2.1.0 |
 | <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | 1.13.1 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.7.1 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.7.0 |
 
 ## Providers
 
@@ -84,7 +84,7 @@ No outputs.
 | <a name="provider_helm"></a> [helm](#provider\_helm) | 2.4.1 |
 | <a name="provider_http"></a> [http](#provider\_http) | 2.1.0 |
 | <a name="provider_kubectl"></a> [kubectl](#provider\_kubectl) | 1.13.1 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.7.1 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.7.0 |
 
 ## Modules
 
@@ -103,26 +103,26 @@ No modules.
 | [helm_release.istiod](https://registry.terraform.io/providers/hashicorp/helm/2.4.1/docs/resources/release) | resource |
 | [kubectl_manifest.argo_applicationset_controller](https://registry.terraform.io/providers/gavinbunney/kubectl/1.13.1/docs/resources/manifest) | resource |
 | [kubectl_manifest.istio_prometheus](https://registry.terraform.io/providers/gavinbunney/kubectl/1.13.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.application_argocd_applicationsets](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.certificate_istio_ingress_argo_certificate](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.certificate_istio_ingress_argo_workflows](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.clusterissuer_letsencrypt_prod](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.clusterrole_argo_workflows_server](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.gateway_argo_workflows](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.gateway_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.role_argo_workflows_webhook](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.rolebinding_argo_argo_workflows_webhook](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.secret_argo_workflows_webhook_clients](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.serviceaccount_argo_workflows_webhook](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.virtualservice_argo_workflows](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_manifest.virtualservice_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/manifest) | resource |
-| [kubernetes_namespace.argo](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/namespace) | resource |
-| [kubernetes_namespace.argo_rollouts](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/namespace) | resource |
-| [kubernetes_namespace.argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/namespace) | resource |
-| [kubernetes_namespace.istio_ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/namespace) | resource |
-| [kubernetes_namespace.istio_system](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/namespace) | resource |
-| [kubernetes_secret_v1.argo_repository_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/secret_v1) | resource |
-| [kubernetes_secret_v1.route53_credentials_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.1/docs/resources/secret_v1) | resource |
+| [kubernetes_manifest.application_argocd_applicationsets](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.certificate_istio_ingress_argo_certificate](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.certificate_istio_ingress_argo_workflows](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.clusterissuer_letsencrypt_prod](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.clusterrole_argo_workflows_server](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.gateway_argo_workflows](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.gateway_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.role_argo_workflows_webhook](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.rolebinding_argo_argo_workflows_webhook](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.secret_argo_workflows_webhook_clients](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.serviceaccount_argo_workflows_webhook](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.virtualservice_argo_workflows](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.virtualservice_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_namespace.argo](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
+| [kubernetes_namespace.argo_rollouts](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
+| [kubernetes_namespace.argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
+| [kubernetes_namespace.istio_ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
+| [kubernetes_namespace.istio_system](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/namespace) | resource |
+| [kubernetes_secret_v1.argo_repository_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/secret_v1) | resource |
+| [kubernetes_secret_v1.route53_credentials_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/secret_v1) | resource |
 | [http_http.argo_applicationset_controller_manifest](https://registry.terraform.io/providers/hashicorp/http/2.1.0/docs/data-sources/http) | data source |
 | [http_http.istio_prometheus_manifest](https://registry.terraform.io/providers/hashicorp/http/2.1.0/docs/data-sources/http) | data source |
 | [kubectl_file_documents.argo_applicationset_controller_docs](https://registry.terraform.io/providers/gavinbunney/kubectl/1.13.1/docs/data-sources/file_documents) | data source |
