@@ -63,7 +63,7 @@ spec:
       image: golang:1.8
       command: [sh, -c]
       args: ["
-        echo \"{{inputs.parameters.message}}\"
+        echo \"{{inputs.parameters.message}}\" &&
         cd /go/src/github.com/golang/example/hello &&
         git status &&
         go build -v .
