@@ -4,6 +4,8 @@ metadata:
   name: node-demo-app
   labels:
     app: node-demo-app
+  annotations:
+    link.argocd.argoproj.io/external-link: https://node-demo-app.invisitr.com
 spec:
   replicas: 1
   revisionHistoryLimit: 1
