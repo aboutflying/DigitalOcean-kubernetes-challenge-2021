@@ -10,8 +10,6 @@ spec:
     parameters:
     - name: revision
       value: cfe12d6
-    - name: message
-      value: "{{workflow.parameters.message}}"
   # a temporary volume, named workdir, will be used as a working directory
   # for this workflow. This volume is passed around from step to step.
   volumeClaimTemplates:
@@ -54,6 +52,7 @@ spec:
       parameters:
       - name: revision
       - name: message
+        value: "{{workflow.parameters.message}}"
       artifacts:
       - name: code
         path: /go/src/github.com/golang/example
