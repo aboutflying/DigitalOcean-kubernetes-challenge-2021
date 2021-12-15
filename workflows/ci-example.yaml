@@ -53,6 +53,7 @@ spec:
     inputs:
       parameters:
       - name: revision
+      - name: message
       artifacts:
       - name: code
         path: /go/src/github.com/golang/example
