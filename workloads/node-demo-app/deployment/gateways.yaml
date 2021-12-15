@@ -1,0 +1,53 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: node-demo-app-gateway
+  namespace: node-demo-app
+spec:
+  selector:
+    istio: ingress
+  servers:
+    - hosts:
+        - node-demo-app.invisitr.com
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+    - hosts:
+        - node-demo-app.invisitr.com
+      port:
+        name: https
+        number: 443
+        protocol: HTTPS
+      tls:
+        credentialName: node-demo-app-certificate
+        mode: SIMPLE
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: node-demo-app-vnext-gateway
+  namespace: node-demo-app
+spec:
+  selector:
+    istio: ingress
+  servers:
+    - hosts:
+        - node-demo-app-vnext.invisitr.com
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+    - hosts:
+        - node-demo-app-vnext.invisitr.com
+      port:
+        name: https
+        number: 443
+        protocol: HTTPS
+      tls:
+        credentialName: node-demo-app-vnext-certificate
+        mode: SIMPLE

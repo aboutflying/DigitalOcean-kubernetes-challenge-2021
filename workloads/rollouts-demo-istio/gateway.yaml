@@ -8,7 +8,7 @@ spec:
     istio: ingress
   servers:
     - hosts:
-        - demo-app.invisitr.com
+        - rollouts-demo.invisitr.com
       port:
         name: http
         number: 80
@@ -16,11 +16,11 @@ spec:
       tls:
         httpsRedirect: true
     - hosts:
-        - demo-app.invisitr.com
+        - rollouts-demo.invisitr.com
       port:
         name: https
         number: 443
         protocol: HTTPS
       tls:
-        credentialName: demo-app-certificate
+        credentialName: rollouts-demo-certificate
         mode: SIMPLE

@@ -7,7 +7,7 @@ spec:
   gateways:
   - istio-rollout-gateway
   hosts:
-  - "demo-app.invisitr.com"
+  - "rollouts-demo.invisitr.com"
   http:
   - name: primary
     route:

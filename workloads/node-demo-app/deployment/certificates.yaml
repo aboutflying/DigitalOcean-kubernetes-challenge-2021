@@ -1,0 +1,25 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: node-demo-app-certificate
+  namespace: istio-ingress
+spec:
+  dnsNames:
+    - node-demo-app.invisitr.com
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  secretName: node-demo-app-certificate
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: node-demo-app-vnext-certificate
+  namespace: istio-ingress
+spec:
+  dnsNames:
+    - node-demo-app-vnext.invisitr.com
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  secretName: node-demo-app-vnext-certificate

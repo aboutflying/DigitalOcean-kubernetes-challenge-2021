@@ -253,7 +253,8 @@ resource "kubernetes_manifest" "secret_argo_workflows_webhook_clients" {
 }
 
 /* this is a workaround for getting github webhooks to work while running argo workflows in client auth mode for this demo. 
-  probably never needed IRL. adds serviceaccount get permission */
+  the helm chart only adds this permission if you're running in SSO mode, and I didn't feel like setting up SSO
+  so probably never needed IRL. adds serviceaccount get permission */
 resource "kubernetes_manifest" "clusterrole_argo_workflows_server" {
   manifest = {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
