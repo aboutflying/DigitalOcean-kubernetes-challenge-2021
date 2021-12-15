@@ -4,6 +4,7 @@ metadata:
   name: ci-example
 spec:
   entrypoint: ci-example
+  volumeClaimGC: OnWorkflowCompletion
   # the 'ci-example' template accepts an parameter 'revision', with a default of 'cfe12d6'.
   # this can be overridden via argo CLI (e.g. `argo submit ci.yaml -p revision=0dea2d0`)
   arguments:
