@@ -56,7 +56,6 @@ resource "kubernetes_manifest" "serviceaccount_argo_workflows_webhook" {
 
 resource "kubernetes_manifest" "role_argo_workflows_webhook" {
   manifest = {
-    "apiVersion" = "rbac.authorization.k8s.io/v1"
     "kind" = "Role"
     "metadata" = {
       "name" = "argo-workflows-webhook"
@@ -68,11 +67,32 @@ resource "kubernetes_manifest" "role_argo_workflows_webhook" {
           "argoproj.io",
         ]
         "resources" = [
-          "workflows",
+          "workfloweventbindings",
         ]
         "verbs" = [
           "list",
-          "update",
+        ]
+      },
+      {
+        "apiGroups" = [
+          "argoproj.io",
+        ]
+        "resources" = [
+          "workflowtemplates",
+        ]
+        "verbs" = [
+          "get",
+        ]
+      },
+      {
+        "apiGroups" = [
+          "argoproj.io",
+        ]
+        "resources" = [
+          "workflows",
+        ]
+        "verbs" = [
+          "create",
         ]
       },
     ]
