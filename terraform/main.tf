@@ -52,4 +52,6 @@ module "k8s-config" {
   route53_region                        = var.route53_region
 
   letsencrypt_email = var.letsencrypt_email
+
+  github_webhook_secret = var.github_webhook_secret
 }

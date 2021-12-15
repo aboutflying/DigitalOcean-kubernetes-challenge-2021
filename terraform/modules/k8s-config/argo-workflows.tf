@@ -230,3 +230,20 @@ resource "kubernetes_manifest" "gateway_argo_workflows" {
 
   depends_on = [helm_release.istio_ingress]
 }
+
+resource "kubernetes_manifest" "secret_argo_workflows_webhook_clients" {
+  manifest = {
+    "apiVersion" = "v1"
+    "kind" = "Secret"
+    "metadata" = {
+      "name" = "argo-workflows-webhook-clients"
+    }
+    "stringData" = {
+      "argo-workflows-webhook" = <<-EOT
+      type: github
+      secret: "${var.github_webhook_secret}"
+      
+      EOT
+    }
+  }
+}
