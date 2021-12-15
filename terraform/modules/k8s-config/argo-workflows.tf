@@ -43,6 +43,102 @@ resource "helm_release" "argo" {
   depends_on = [kubernetes_namespace.argo]
 }
 
+/* this is a workaround for getting github webhooks to work while running argo workflows in client auth mode for this demo. 
+  probably never needed IRL. adds serviceaccount get permission to the out-of-the-box clusterrole */
+resource "kubernetes_manifest" "clusterrole_argo_workflows_server" {
+  manifest = {
+    "apiVersion" = "rbac.authorization.k8s.io/v1"
+    "kind" = "ClusterRole"
+    "metadata" = {
+      "name" = "argo-argo-workflows-server"
+      "namespace" = "argo"
+    }
+    "rules" = [
+      {
+        "apiGroups" = [
+          "",
+        ]
+        "resources" = [
+          "configmaps",
+          "events",
+        ]
+        "verbs" = [
+          "get",
+          "watch",
+          "list",
+        ]
+      },
+      {
+        "apiGroups" = [
+          "",
+        ]
+        "resources" = [
+          "pods",
+          "pods/exec",
+          "pods/log",
+        ]
+        "verbs" = [
+          "get",
+          "list",
+          "watch",
+          "delete",
+        ]
+      },
+      {
+        "apiGroups" = [
+          "",
+        ]
+        "resources" = [
+          "secrets",
+          "serviceaccounts", # here
+        ]
+        "verbs" = [
+          "get",
+        ]
+      },
+      {
+        "apiGroups" = [
+          "",
+        ]
+        "resources" = [
+          "events",
+        ]
+        "verbs" = [
+          "watch",
+          "create",
+          "patch",
+        ]
+      },
+      {
+        "apiGroups" = [
+          "argoproj.io",
+        ]
+        "resources" = [
+          "eventsources",
+          "sensors",
+          "workflows",
+          "workfloweventbindings",
+          "workflowtemplates",
+          "cronworkflows",
+        ]
+        "verbs" = [
+          "create",
+          "get",
+          "list",
+          "watch",
+          "update",
+          "patch",
+          "delete",
+        ]
+      },
+    ]
+  }
+
+  depends_on = [
+    helm_release.argo
+  ]
+}
+
 # https://argoproj.github.io/argo-workflows/webhooks/
 resource "kubernetes_manifest" "serviceaccount_argo_workflows_webhook" {
   manifest = {
