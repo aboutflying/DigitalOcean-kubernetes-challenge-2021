@@ -101,3 +101,111 @@ resource "kubernetes_manifest" "rolebinding_argo_argo_workflows_webhook" {
     ]
   }
 }
+
+resource "kubernetes_manifest" "certificate_istio_ingress_argo_workflows" {
+  manifest = {
+    "apiVersion" = "cert-manager.io/v1"
+    "kind"       = "Certificate"
+    "metadata" = {
+      "name"      = "argo-workflows-certificate"
+      "namespace" = "istio-ingress"
+    }
+    "spec" = {
+      "dnsNames" = [
+        "ci.${var.route53_dns_zone}",
+      ]
+      "issuerRef" = {
+        "kind" = "ClusterIssuer"
+        "name" = "letsencrypt-prod"
+      }
+      "secretName" = "argo-workflows-certificate"
+    }
+  }
+
+  depends_on = [
+    helm_release.istio_ingress,
+    kubernetes_manifest.clusterissuer_letsencrypt_prod
+  ]
+}
+
+resource "kubernetes_manifest" "virtualservice_argo_workflows" {
+  manifest = {
+    "apiVersion" = "networking.istio.io/v1alpha3"
+    "kind"       = "VirtualService"
+    "metadata" = {
+      "name"      = "argo-workflows"
+      "namespace" = "argo"
+    }
+    "spec" = {
+      "gateways" = [
+        "argo-workflows",
+      ]
+      "hosts" = [
+        "ci.${var.route53_dns_zone}",
+      ]
+      "http" = [
+        {
+          "route" = [
+            {
+              "destination" = {
+                "host" = "argo-argo-workflows-server"
+                "port" = {
+                  "number" = 2746
+                }
+              }
+            },
+          ]
+        },
+      ]
+    }
+  }
+
+  depends_on = [helm_release.istio_ingress]
+}
+
+resource "kubernetes_manifest" "gateway_argo_workflows" {
+  manifest = {
+    "apiVersion" = "networking.istio.io/v1alpha3"
+    "kind"       = "Gateway"
+    "metadata" = {
+      "name"      = "argo-workflows"
+      "namespace" = "argo"
+    }
+    "spec" = {
+      "selector" = {
+        "istio" = "ingress"
+      }
+      "servers" = [
+        {
+          "hosts" = [
+            "ci.${var.route53_dns_zone}",
+          ]
+          "port" = {
+            "name"     = "http"
+            "number"   = 80
+            "protocol" = "HTTP"
+          }
+          "tls" = {
+            "httpsRedirect" = true
+          }
+        },
+        {
+          "hosts" = [
+            "ci.${var.route53_dns_zone}",
+          ]
+          "port" = {
+            "name"     = "https"
+            "number"   = 443
+            "protocol" = "HTTPS"
+          }
+          "tls" = {
+            "credentialName" = "argo-workflows-certificate"
+            "mode"           = "SIMPLE"
+          }
+        },
+      ]
+    }
+  }
+
+  depends_on = [helm_release.istio_ingress]
+}
