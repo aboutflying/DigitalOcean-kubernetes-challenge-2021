@@ -111,6 +111,7 @@ No modules.
 | [kubernetes_manifest.gateway_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_manifest.role_argo_workflows_webhook](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_manifest.rolebinding_argo_argo_workflows_webhook](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
+| [kubernetes_manifest.secret_argo_workflows_webhook_clients](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_manifest.serviceaccount_argo_workflows_webhook](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_manifest.virtualservice_argo_workflows](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
 | [kubernetes_manifest.virtualservice_argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/2.7.0/docs/resources/manifest) | resource |
@@ -140,6 +141,7 @@ No modules.
 | <a name="input_cluster_ca_certificate"></a> [cluster\_ca\_certificate](#input\_cluster\_ca\_certificate) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_host"></a> [cluster\_host](#input\_cluster\_host) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_token"></a> [cluster\_token](#input\_cluster\_token) | n/a | `string` | n/a | yes |
+| <a name="input_github_webhook_secret"></a> [github\_webhook\_secret](#input\_github\_webhook\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_istio_prometheus_manifest_url"></a> [istio\_prometheus\_manifest\_url](#input\_istio\_prometheus\_manifest\_url) | n/a | `string` | n/a | yes |
 | <a name="input_istio_version"></a> [istio\_version](#input\_istio\_version) | n/a | `string` | n/a | yes |
 | <a name="input_letsencrypt_email"></a> [letsencrypt\_email](#input\_letsencrypt\_email) | n/a | `string` | n/a | yes |

@@ -237,6 +237,7 @@ resource "kubernetes_manifest" "secret_argo_workflows_webhook_clients" {
     "kind" = "Secret"
     "metadata" = {
       "name" = "argo-workflows-webhook-clients"
+      "namespace" = "argo"
     }
     "stringData" = {
       "argo-workflows-webhook" = <<-EOT
