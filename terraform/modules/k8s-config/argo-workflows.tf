@@ -43,12 +43,13 @@ resource "helm_release" "argo" {
   depends_on = [kubernetes_namespace.argo]
 }
 
+# https://argoproj.github.io/argo-workflows/webhooks/
 resource "kubernetes_manifest" "serviceaccount_argo_workflows_webhook" {
   manifest = {
     "apiVersion" = "v1"
     "kind" = "ServiceAccount"
     "metadata" = {
-      "name" = "argo-workflows-webhook"
+      "name" = "github.com"
       "namespace" = "argo"
     }
   }
@@ -116,7 +117,7 @@ resource "kubernetes_manifest" "rolebinding_argo_argo_workflows_webhook" {
     "subjects" = [
       {
         "kind" = "ServiceAccount"
-        "name" = "argo-workflows-webhook"
+        "name" = "github.com"
         "namespace" = "argo"
       },
     ]
@@ -240,7 +241,7 @@ resource "kubernetes_manifest" "secret_argo_workflows_webhook_clients" {
       "namespace" = "argo"
     }
     "stringData" = {
-      "argo-workflows-webhook" = <<-EOT
+      "github.com" = <<-EOT
       type: github
       secret: "${var.github_webhook_secret}"
       
