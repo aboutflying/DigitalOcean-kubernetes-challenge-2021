@@ -22,8 +22,6 @@ spec:
     spec:
       project: default
       source:
-        directory:
-          recurse: true
         repoURL: git@github.com:aboutflying/DigitalOcean-kubernetes-challenge-2021.git
         targetRevision: HEAD
         path: '{{path}}'
