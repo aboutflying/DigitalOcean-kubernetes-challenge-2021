@@ -328,6 +328,9 @@ resource "kubernetes_manifest" "gateway_argo_workflows" {
 }
 
 resource "kubernetes_manifest" "secret_argo_workflows_webhook_clients" {
+  # https://github.com/hashicorp/terraform-provider-kubernetes/issues/1521#issuecomment-983811964
+  computed_fields = ["metadata.annotations", "metadata.labels", "stringData"]
+  
   manifest = {
     "apiVersion" = "v1"
     "kind" = "Secret"
