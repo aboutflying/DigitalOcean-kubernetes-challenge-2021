@@ -35,7 +35,7 @@ spec:
         value: "{{workflow.parameters.revision}}"
       artifacts:
       - name: code
-        path: /workspace/src
+        path: /workdir/src
         git:
           repo: https://github.com/aboutflying/DigitalOcean-kubernetes-challenge-2021.git
           revision: "{{inputs.parameters.revision}}"
@@ -44,18 +44,18 @@ spec:
       args:
         - -r
         - <
-        - /workspace/src/node-demo-app/package.json
+        - /workdir/src/node-demo-app/package.json
         - .version
         - >
-        - /workspace/src/node-demo-app/version
+        - /workdir/src/node-demo-app/version
       volumeMounts:
       - name: workdir
-        mountPath: /workspace
+        mountPath: /workdir
     outputs:
       parameters:
         - name: version
           valueFrom:
-            path: /workspace/src/node-demo-app/version
+            path: /workdir/src/node-demo-app/version
   - name: buildkit-build
     inputs:
       parameters:
@@ -70,12 +70,12 @@ spec:
         - --frontend
         - dockerfile.v0
         - --local
-        - context=/workspace/src/node-demo-app
+        - context=/workdir/src/node-demo-app
         - --local
-        - dockerfile=/workspace/src/node-demo-app
+        - dockerfile=/workdir/src/node-demo-app
       volumeMounts:
       - name: workdir
-        mountPath: /workspace
+        mountPath: /workdir
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowEventBinding
