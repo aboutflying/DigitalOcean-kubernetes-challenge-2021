@@ -35,7 +35,7 @@ spec:
         value: "{{workflow.parameters.revision}}"
       artifacts:
       - name: code
-        path: /workspace
+        path: /workspace/src
         git:
           repo: https://github.com/aboutflying/DigitalOcean-kubernetes-challenge-2021.git
           revision: "{{inputs.parameters.revision}}"
@@ -44,10 +44,10 @@ spec:
       args:
         - -r
         - <
-        - /workspace/node-demo-app/package.json
+        - /workspace/src/node-demo-app/package.json
         - .version
         - >
-        - /workspace/node-demo-app/version
+        - /workspace/src/node-demo-app/version
       volumeMounts:
       - name: workdir
         mountPath: /workspace
@@ -55,7 +55,7 @@ spec:
       parameters:
         - name: version
           valueFrom:
-            path: /workspace/node-demo-app/version
+            path: /workspace/src/node-demo-app/version
   - name: buildkit-build
     inputs:
       parameters:
@@ -70,9 +70,9 @@ spec:
         - --frontend
         - dockerfile.v0
         - --local
-        - context=/workspace/node-demo-app
+        - context=/workspace/src/node-demo-app
         - --local
-        - dockerfile=/workspace/node-demo-app
+        - dockerfile=/workspace/src/node-demo-app
       volumeMounts:
       - name: workdir
         mountPath: /workspace
