@@ -76,23 +76,19 @@ spec:
       volumeMounts:
       - name: workdir
         mountPath: /workspace
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: WorkflowEventBinding
-# metadata:
-#   name: event-consumer-example
-# spec:
-#   event:
-#     # metadata header name must be lowercase to match in selector
-#     selector: payload.message != "" && metadata["x-argo-e2e"] == ["true"] && discriminator == "my-discriminator"
-#   submit:
-#     workflowTemplateRef:
-#       name: buildkit-runner
-#     arguments:
-#       parameters:
-#       - name: message
-#         valueFrom:
-#           event: payload.message
-#       - name: revision
-#         valueFrom:
-#           event: payload.head_commit.id
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowEventBinding
+metadata:
+  name: node-demo-app-event
+spec:
+  event:
+    selector: payload.head_commit.message != "" && (payload.head_commit.message contains "*build*")
+  submit:
+    workflowTemplateRef:
+      name: buildkit-runner
+    arguments:
+      parameters:
+      - name: revision
+        valueFrom:
+          event: payload.head_commit.id
