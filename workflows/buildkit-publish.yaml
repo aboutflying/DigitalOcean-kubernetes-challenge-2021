@@ -27,6 +27,9 @@ spec:
         template: get-version
     - - name: build
         template: buildkit-build
+          parameters:
+            - name: version
+              value: "{{steps.get-version.outputs.parameters.version}}"
 
   - name: get-version
     inputs:
@@ -55,7 +58,6 @@ spec:
     inputs:
       parameters:
       - name: version
-        value: "{{steps.get-version.outputs.parameters.version}}"
     volumes:
       - name: docker-config
         secret:
