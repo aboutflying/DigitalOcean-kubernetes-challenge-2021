@@ -45,7 +45,8 @@ spec:
         - -r
         - .version
         - /workdir/src/node-demo-app/package.json
-        - >
+        - |
+        - tee
         - /workdir/src/node-demo-app/version
       volumeMounts:
       - name: workdir
