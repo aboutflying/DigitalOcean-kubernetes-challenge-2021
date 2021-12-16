@@ -3,8 +3,6 @@ kind: WorkflowTemplate
 metadata:
   name: buildkit-runner
 spec:
-  securityContext:
-    privileged: true
   entrypoint: buildkit-runner
   ttlStrategy:
     secondsAfterCompletion: 300 # Time to live after workflow is completed
@@ -73,6 +71,8 @@ spec:
       volumeMounts:
       - name: workdir
         mountPath: /workdir
+      securityContext:
+        privileged: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowEventBinding
