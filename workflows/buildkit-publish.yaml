@@ -56,6 +56,10 @@ spec:
       parameters:
       - name: version
         value: "{{steps.get-version.outputs.parameters.version}}"
+    volumes:
+      - name: docker-config
+        secret:
+          secretName: docker-config
     container:
       image: moby/buildkit:master
       command:
@@ -68,9 +72,16 @@ spec:
         - context=/workdir/src/node-demo-app
         - --local
         - dockerfile=/workdir/src/node-demo-app
+        - --output
+        - type=image,name=docker.io/invisitr/node-demo-app:{{inputs.parameters.version}},push=true
+      env:
+        - name: DOCKER_CONFIG
+          value: /.docker
       volumeMounts:
       - name: workdir
         mountPath: /workdir
+      - name: docker-config
+        mountPath: /.docker
       securityContext:
         privileged: true
 ---
