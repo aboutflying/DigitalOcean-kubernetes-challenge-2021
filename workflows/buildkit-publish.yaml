@@ -43,8 +43,7 @@ spec:
       image: stedolan/jq
       args:
         - -r
-        - <
-        - /workdir/src/node-demo-app/package.json
+        - </workdir/src/node-demo-app/package.json
         - .version
         - >
         - /workdir/src/node-demo-app/version
