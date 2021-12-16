@@ -73,7 +73,7 @@ spec:
         - --local
         - dockerfile=/workdir/src/node-demo-app
         - --output
-        - type=image,name=docker.io/invisitr/node-demo-app:{{inputs.parameters.version}},push=true
+        - type=image,\"name=docker.io/invisitr/node-demo-app:{{inputs.parameters.version}}\",push=true
       env:
         - name: DOCKER_CONFIG
           value: /.docker
