@@ -3,6 +3,8 @@ kind: WorkflowTemplate
 metadata:
   name: buildkit-runner
 spec:
+  securityContext:
+    privileged: true
   entrypoint: buildkit-runner
   ttlStrategy:
     secondsAfterCompletion: 300 # Time to live after workflow is completed
@@ -51,8 +53,6 @@ spec:
         - name: version
           valueFrom:
             path: /workdir/src/node-demo-app/version
-    securityContext:
-      privileged: true
   - name: buildkit-build
     inputs:
       parameters:
