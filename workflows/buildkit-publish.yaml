@@ -16,6 +16,8 @@ spec:
       resources:
         requests:
           storage: 1Gi
+  securityContext:
+    privileged: true
 
   templates:
   - name: buildkit-runner
