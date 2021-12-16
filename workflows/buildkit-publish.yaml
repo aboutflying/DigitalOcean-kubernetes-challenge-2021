@@ -41,13 +41,8 @@ spec:
           revision: "{{inputs.parameters.revision}}"
     container:
       image: stedolan/jq
-      args:
-        - -r
-        - .version
-        - /workdir/src/node-demo-app/package.json
-        - |
-        - tee
-        - /workdir/src/node-demo-app/version
+      command: [sh, -c]
+      args: ["/usr/local/bin/jq -r .version /workdir/src/node-demo-app/package.json | tee /workdir/src/node-demo-app/version"]
       volumeMounts:
       - name: workdir
         mountPath: /workdir
