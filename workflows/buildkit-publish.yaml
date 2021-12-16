@@ -1,0 +1,98 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: buildkit-runner
+spec:
+  entrypoint: buildkit-runner
+  ttlStrategy:
+    secondsAfterCompletion: 300 # Time to live after workflow is completed
+  # a temporary volume, named workdir, will be used as a working directory
+  # for this workflow. This volume is passed around from step to step.
+  volumeClaimTemplates:
+  - metadata:
+      name: workdir
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+
+  templates:
+  - name: buildkit-runner
+    inputs:
+      parameters:
+      - name: revision
+    steps:
+    - - name: get-version
+        template: get-version
+    - - name: build
+        template: buildkit-build
+
+  - name: get-version
+    inputs:
+      parameters:
+      - name: revision
+        value: "{{workflow.parameters.revision}}"
+      artifacts:
+      - name: code
+        path: /workspace
+        git:
+          repo: https://github.com/aboutflying/DigitalOcean-kubernetes-challenge-2021.git
+          revision: "{{inputs.parameters.revision}}"
+    container:
+      image: stedolan/jq
+      args:
+        - -r
+        - <
+        - /workspace/node-demo-app/package.json
+        - .version
+        - >
+        - /workspace/node-demo-app/version
+      volumeMounts:
+      - name: workdir
+        mountPath: /workspace
+    outputs:
+      parameters:
+        - name: version
+          valueFrom:
+            path: /workspace/node-demo-app/version
+  - name: buildkit-build
+    inputs:
+      parameters:
+      - name: version
+        value: "{{steps.get-version.outputs.parameters.version}}"
+    container:
+      image: moby/buildkit:master
+      command:
+        - buildctl-daemonless.sh
+      args: 
+        - build
+        - --frontend
+        - dockerfile.v0
+        - --local
+        - context=/workspace/node-demo-app
+        - --local
+        - dockerfile=/workspace/node-demo-app
+      volumeMounts:
+      - name: workdir
+        mountPath: /workspace
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: WorkflowEventBinding
+# metadata:
+#   name: event-consumer-example
+# spec:
+#   event:
+#     # metadata header name must be lowercase to match in selector
+#     selector: payload.message != "" && metadata["x-argo-e2e"] == ["true"] && discriminator == "my-discriminator"
+#   submit:
+#     workflowTemplateRef:
+#       name: buildkit-runner
+#     arguments:
+#       parameters:
+#       - name: message
+#         valueFrom:
+#           event: payload.message
+#       - name: revision
+#         valueFrom:
+#           event: payload.head_commit.id
