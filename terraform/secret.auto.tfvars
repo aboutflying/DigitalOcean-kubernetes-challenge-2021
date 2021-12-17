@@ -7,3 +7,5 @@ route53_credentials_secret_access_key = ""
 route53_hosted_zone_id                = ""
 
 ssh_private_key = ""
+
+github_webhook_secret = ""

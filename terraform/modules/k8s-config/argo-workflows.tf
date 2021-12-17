@@ -14,7 +14,7 @@ resource "helm_release" "argo" {
 
   set {
     name  = "server.extraArgs"
-    value = "{--auth-mode=client}"
+    value = "{--auth-mode=client,--x-frame-options=SAMEORIGIN}"
   }
 
   set {
