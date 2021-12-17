@@ -5,7 +5,7 @@
 ### **Highlights**
 
 - [Argo](https://argoproj.github.io/)-based [CI/CD](https://en.wikipedia.org/wiki/CI/CD) solution - [ArgoCD](https://argoproj.github.io/cd) (feat. [ApplicationSets](https://argocd-applicationset.readthedocs.io/en/stable/) & [Image Updater](https://argocd-image-updater.readthedocs.io/en/stable/)), [Workflows](https://argoproj.github.io/argo-workflows/), [Rollouts](https://argoproj.github.io/argo-rollouts/)
-    - CI workflow utilzing [jq](https://stedolan.github.io/jq/) and [BuildKit](https://github.com/moby/buildkit)
+    - CI workflow utilizing [jq](https://stedolan.github.io/jq/) and [BuildKit](https://github.com/moby/buildkit)
 - [DigitalOcean](https://www.digitalocean.com) Kubernetes cluster & Argo platform bootstrapped with [Terraform](https://terraform.io)
     - Implements [cert-manager](https://cert-manager.io/) and [Istio](https://istio.io/) for ingress
 
