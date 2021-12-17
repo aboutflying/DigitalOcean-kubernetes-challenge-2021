@@ -19,7 +19,7 @@ exports.hello = async (_, res) => {
         res.write('<html>');
         res.write(`<head><title>hello! v${version}</title></head>`);
         res.write('<body>')
-        res.write(`<pre>Hello from ${JSON.stringify(osInfo.hostname, null, 4)}!<br><br>Version: ${version}<br><br>${osReleaseInfo}</pre><br>`);
+        res.write(`<pre>Hello from ${osInfo.hostname}!<br><br>Version: ${version}<br><br>${osReleaseInfo}</pre><br>`);
         res.write(`<img src="${imageUrl}">`);
         res.write('</body></html>')
         res.end();
