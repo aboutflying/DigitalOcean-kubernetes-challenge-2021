@@ -31,6 +31,6 @@ spec:
             cpu: 5m
   strategy:
     blueGreen:
-      autoPromotionEnabled: false
+      autoPromotionSeconds: 300
       activeService: node-demo-app
       previewService: node-demo-app-vnext
