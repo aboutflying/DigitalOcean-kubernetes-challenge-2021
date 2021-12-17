@@ -7,8 +7,8 @@ metadata:
   annotations:
     link.argocd.argoproj.io/external-link: https://node-demo-app.invisitr.com
 spec:
-  replicas: 1
-  revisionHistoryLimit: 1
+  replicas: 2
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: node-demo-app
