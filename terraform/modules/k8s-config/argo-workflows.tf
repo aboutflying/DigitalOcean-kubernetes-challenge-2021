@@ -47,9 +47,9 @@ resource "helm_release" "argo" {
 resource "kubernetes_manifest" "serviceaccount_argo_workflows_webhook" {
   manifest = {
     "apiVersion" = "v1"
-    "kind" = "ServiceAccount"
+    "kind"       = "ServiceAccount"
     "metadata" = {
-      "name" = "github.com"
+      "name"      = "github.com"
       "namespace" = "argo"
     }
   }
@@ -58,9 +58,9 @@ resource "kubernetes_manifest" "serviceaccount_argo_workflows_webhook" {
 resource "kubernetes_manifest" "role_argo_workflows_webhook" {
   manifest = {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
-    "kind" = "Role"
+    "kind"       = "Role"
     "metadata" = {
-      "name" = "argo-workflows-webhook"
+      "name"      = "argo-workflows-webhook"
       "namespace" = "argo"
     }
     "rules" = [
@@ -104,20 +104,20 @@ resource "kubernetes_manifest" "role_argo_workflows_webhook" {
 resource "kubernetes_manifest" "rolebinding_argo_argo_workflows_webhook" {
   manifest = {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
-    "kind" = "RoleBinding"
+    "kind"       = "RoleBinding"
     "metadata" = {
-      "name" = "argo-workflows-webhook"
+      "name"      = "argo-workflows-webhook"
       "namespace" = "argo"
     }
     "roleRef" = {
       "apiGroup" = "rbac.authorization.k8s.io"
-      "kind" = "Role"
-      "name" = "argo-workflows-webhook"
+      "kind"     = "Role"
+      "name"     = "argo-workflows-webhook"
     }
     "subjects" = [
       {
-        "kind" = "ServiceAccount"
-        "name" = "github.com"
+        "kind"      = "ServiceAccount"
+        "name"      = "github.com"
         "namespace" = "argo"
       },
     ]
@@ -238,9 +238,9 @@ resource "kubernetes_manifest" "secret_argo_workflows_webhook_clients" {
 
   manifest = {
     "apiVersion" = "v1"
-    "kind" = "Secret"
+    "kind"       = "Secret"
     "metadata" = {
-      "name" = "argo-workflows-webhook-clients"
+      "name"      = "argo-workflows-webhook-clients"
       "namespace" = "argo"
     }
     "stringData" = {
@@ -258,7 +258,7 @@ resource "kubernetes_manifest" "secret_argo_workflows_webhook_clients" {
 resource "kubernetes_manifest" "clusterrole_argo_workflows_server" {
   manifest = {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
-    "kind" = "ClusterRole"
+    "kind"       = "ClusterRole"
     "metadata" = {
       "name" = "argo-workflows-server-webhook-workaround"
     }
@@ -285,19 +285,19 @@ resource "kubernetes_manifest" "clusterrole_argo_workflows_server" {
 resource "kubernetes_manifest" "clusterrolebinding_argo_argo_workflows_webhook" {
   manifest = {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
-    "kind" = "ClusterRoleBinding"
+    "kind"       = "ClusterRoleBinding"
     "metadata" = {
       "name" = "argo-workflows-server-webhook-workaround"
     }
     "roleRef" = {
       "apiGroup" = "rbac.authorization.k8s.io"
-      "kind" = "ClusterRole"
-      "name" = "argo-workflows-server-webhook-workaround"
+      "kind"     = "ClusterRole"
+      "name"     = "argo-workflows-server-webhook-workaround"
     }
     "subjects" = [
       {
-        "kind" = "ServiceAccount"
-        "name" = "argo-argo-workflows-server"
+        "kind"      = "ServiceAccount"
+        "name"      = "argo-argo-workflows-server"
         "namespace" = "argo"
       },
     ]

@@ -101,6 +101,10 @@ variable "argocd_version" {
   type = string
 }
 
+variable "argocd_image_updater_version" {
+  type = string
+}
+
 variable "certmanager_version" {
   type = string
 }

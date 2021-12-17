@@ -36,6 +36,7 @@ module "k8s-config" {
 
   argo_workflows_version                      = var.argo_workflows_version
   argocd_version                              = var.argocd_version
+  argocd_image_updater_version                = var.argocd_image_updater_version
   argo_rollouts_version                       = var.argo_rollouts_version
   argo_url                                    = var.argo_url
   argo_repo_url                               = var.argo_repo_url

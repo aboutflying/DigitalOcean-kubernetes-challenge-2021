@@ -8,3 +8,6 @@ resources:
 - virtualservices.yaml
 - rollout.yaml
 - certificates.yaml
+
+configurations:
+- https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml

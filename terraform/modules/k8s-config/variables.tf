@@ -64,6 +64,10 @@ variable "argocd_version" {
   type = string
 }
 
+variable "argocd_image_updater_version" {
+  type = string
+}
+
 variable "certmanager_version" {
   type = string
 }
@@ -78,6 +82,6 @@ variable "ssh_private_key" {
 }
 
 variable "github_webhook_secret" {
-  type = string
+  type      = string
   sensitive = true
 }

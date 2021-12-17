@@ -13,17 +13,20 @@ spec:
                   url: https://kubernetes.default.svc
           - git:
               repoURL: https://github.com/aboutflying/DigitalOcean-kubernetes-challenge-2021.git
-              revision: HEAD
+              revision: main
               directories:
                 - path: workloads/*
   template:
     metadata:
       name: '{{path.basename}}-{{cluster}}'
+      annotations:
+        argocd-image-updater.argoproj.io/write-back-method: git
+        argocd-image-updater.argoproj.io/write-back-target: kustomization
     spec:
       project: default
       source:
         repoURL: git@github.com:aboutflying/DigitalOcean-kubernetes-challenge-2021.git
-        targetRevision: HEAD
+        targetRevision: main
         path: '{{path}}'
       destination:
         server: '{{url}}'

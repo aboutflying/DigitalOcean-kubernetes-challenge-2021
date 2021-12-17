@@ -192,15 +192,15 @@ resource "kubernetes_secret_v1" "argo_repository_secret" {
 resource "kubernetes_manifest" "application_argocd_applicationsets" {
   manifest = {
     "apiVersion" = "argoproj.io/v1alpha1"
-    "kind" = "Application"
+    "kind"       = "Application"
     "metadata" = {
-      "name" = "applicationsets"
+      "name"      = "applicationsets"
       "namespace" = "argocd"
     }
     "spec" = {
       "destination" = {
         "namespace" = "argo"
-        "server" = "https://kubernetes.default.svc"
+        "server"    = "https://kubernetes.default.svc"
       }
       "project" = "default"
       "source" = {
@@ -208,8 +208,8 @@ resource "kubernetes_manifest" "application_argocd_applicationsets" {
           "jsonnet" = {}
           "recurse" = true
         }
-        "path" = "applicationsets"
-        "repoURL" = "git@github.com:aboutflying/DigitalOcean-kubernetes-challenge-2021.git"
+        "path"           = "applicationsets"
+        "repoURL"        = "git@github.com:aboutflying/DigitalOcean-kubernetes-challenge-2021.git"
         "targetRevision" = "HEAD"
       }
       "syncPolicy" = {
