@@ -11,3 +11,6 @@ resources:
 
 configurations:
 - https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
+images:
+- name: invisitr/node-demo-app
+  newTag: 1.0.0
