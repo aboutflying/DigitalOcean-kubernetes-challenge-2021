@@ -32,5 +32,6 @@ spec:
   strategy:
     blueGreen:
       # autoPromotionSeconds: 300
+      autoPromotionEnabled: false
       activeService: node-demo-app
       previewService: node-demo-app-vnext
