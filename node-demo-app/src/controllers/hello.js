@@ -7,7 +7,7 @@ const version = process.env.npm_package_version
 
 const downloadImage = async () => {
     const imagePath = path.resolve(__dirname, '..', 'public', 'photo.jpg');
-    const writer = fs.createWriteStream(imagePath);
+    const writer = fs.createWriteStream(imagePath, { flags: 'w+' });
 
     const query = await axios.get(`https://source.unsplash.com/400x400/?earth-is-awesome`);
 
