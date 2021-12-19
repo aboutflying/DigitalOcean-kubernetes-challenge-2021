@@ -55,4 +55,6 @@ module "k8s-config" {
   letsencrypt_email = var.letsencrypt_email
 
   github_webhook_secret = var.github_webhook_secret
+
+  dockerhub_api_key = var.dockerhub_api_key
 }

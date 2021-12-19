@@ -303,3 +303,18 @@ resource "kubernetes_manifest" "clusterrolebinding_argo_argo_workflows_webhook" 
     ]
   }
 }
+
+resource "kubernetes_manifest" "secret_argo_docker_config" {
+  manifest = {
+    "apiVersion" = "v1"
+    "kind" = "Secret"
+    "metadata" = {
+      "name" = "docker-config"
+      "namespace" = "argo"
+    }
+    "data" = {
+      "config.json" = base64encode("{\"auths\": {\"https://index.docker.io/v1/\": {\"auth\": \"${var.dockerhub_api_key}\"}}}")
+    }
+    "type" = "Opaque"
+  }
+}

@@ -9,3 +9,5 @@ route53_hosted_zone_id                = ""
 ssh_private_key = ""
 
 github_webhook_secret = ""
+
+dockerhub_api_key = ""
